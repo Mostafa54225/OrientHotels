@@ -1,0 +1,6 @@
+@OrientHGAPI_HostAddress = http://localhost:5072
+
+GET {{OrientHGAPI_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
