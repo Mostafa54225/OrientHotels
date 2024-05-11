@@ -70,7 +70,7 @@ namespace OrientHGAPI.Controllers
 
 
             var facilities = await _context.VwFacilities.Where(x => x.LanguageAbbreviation == languageCode && x.HotelUrl == hotelurl && x.FacilityStatus == true && x.IsDeleted == false).ToListAsync();
-            var hotelRooms = await _context.VwRooms.Where(x => x.HotelId == hotel.HotelId && x.LanguageAbbreviation == languageCode && x.RoomStatus == true).OrderBy(x => x.RoomPosition).ToListAsync();
+            var hotelRooms = await _context.VwRooms.Where(x => x.HotelId == hotel.HotelId && x.LanguageAbbreviation == languageCode && x.RoomStatus == true && x.IsDisplayInHome == true).OrderBy(x => x.RoomPosition).ToListAsync();
             var hotelNews = await _context.VwNews.Where(x => x.HotelId == hotel.HotelId && x.LanguageAbbreviation == languageCode && x.NewsStatus == true).OrderByDescending(x => x.NewsId).ToListAsync();
 
             var restaurants = await _context.VwRestaurants.Where(x => x.LanguageAbbreviation == languageCode && x.HotelUrl == hotelurl && x.RestaurantStatus == true && x.IsDeleted == false).ToListAsync();
@@ -134,6 +134,7 @@ namespace OrientHGAPI.Controllers
                 foreach (var hotelfacilities in hotelDto.HotelFacilities)
                 {
                     hotelfacilities.FacilityPhotoHome = _configuration["ImagesLink"] + hotelfacilities.FacilityPhotoHome;
+                    hotelfacilities.FacilityPhoto = _configuration["ImagesLink"] + hotelfacilities.FacilityPhoto;
                 }
             }
 

@@ -49,6 +49,7 @@ namespace OrientHGAPI.Controllers
             foreach (var rest in restaurantDto)
             {
                 rest.RestaurantPhoto = _configuration["ImagesLink"] + rest.RestaurantPhoto;
+                rest.RestaurantPhotoHome = _configuration["ImagesLink"] + rest.RestaurantPhotoHome;
             }
 
 
@@ -74,6 +75,7 @@ namespace OrientHGAPI.Controllers
             var restaurantDto = _mapper.Map<GetRestaurantDetails>(restaurantdetails);
 
             restaurantDto.RestaurantPhoto = _configuration["ImagesLink"] + restaurantDto.RestaurantPhoto;
+            restaurantDto.RestaurantPhotoHome = _configuration["ImagesLink"] + restaurantDto.RestaurantPhotoHome;
             restaurantDto.RestaurantBanner = _configuration["ImagesLink"] + restaurantDto.RestaurantBanner;
             restaurantDto.RestaurantBannerTablet = _configuration["ImagesLink"] + restaurantDto.RestaurantBannerTablet;
             restaurantDto.RestaurantBannerMobile = _configuration["ImagesLink"] + restaurantDto.RestaurantBannerMobile;

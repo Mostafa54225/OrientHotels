@@ -31,7 +31,7 @@ namespace OrientHGAPI.Controllers
 
 
             var facilities = await _context.VwFacilities.Where(x => x.LanguageAbbreviation == languageCode && x.HotelUrl == hotelUrl && x.FacilityStatus == true && x.IsDeleted == false).ToListAsync();
-
+            
             var facilitiesDto = _mapper.Map<List<GetFacility>>(facilities);
 
 
@@ -48,6 +48,8 @@ namespace OrientHGAPI.Controllers
             foreach (var facility in facilitiesDto)
             {
                 facility.FacilityPhotoHome = _configuration["ImagesLink"] + facility.FacilityPhotoHome;
+                facility.FacilityPhoto = _configuration["ImagesLink"] + facility.FacilityPhoto;
+
             }
 
             GetFacilityList model = new()
@@ -70,6 +72,7 @@ namespace OrientHGAPI.Controllers
             var facilityDto = _mapper.Map<GetFacilityDetails>(facilityDetails);
 
             facilityDto.FacilityPhoto = _configuration["ImagesLink"] + facilityDto.FacilityPhoto;
+            facilityDto.FacilityPhotoHome = _configuration["ImagesLink"] + facilityDto.FacilityPhotoHome;
             facilityDto.FacilityBanner = _configuration["ImagesLink"] + facilityDto.FacilityBanner;
             facilityDto.FacilityBannerMobile = _configuration["ImagesLink"] + facilityDto.FacilityBannerMobile;
             facilityDto.FacilityBannerTablet = _configuration["ImagesLink"] + facilityDto.FacilityBannerTablet;
@@ -88,6 +91,7 @@ namespace OrientHGAPI.Controllers
                 foreach (var otherr in facilityDto.OtherFacility)
                 {
                     otherr.FacilityPhotoHome = _configuration["ImagesLink"] + otherr.FacilityPhotoHome;
+                    otherr.FacilityPhoto = _configuration["ImagesLink"] + otherr.FacilityPhoto;
                 }
             }
             if (facilityDto.FacilityGallery != null)

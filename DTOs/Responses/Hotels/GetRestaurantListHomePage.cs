@@ -11,6 +11,8 @@
         public string DressCode { get; set; }
         public string RestaurantCuisine { get; set; }
         public string Openinghours { get; set; }
+        public bool? IsMoreDetails { get; set; }
+
 
     }
 }
